@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <!-- Register form -->
+
+    <h1>Register</h1>
+    {% for message in get_flashed_messages(category_filter=['reg']) %}
+    <p>{{message}}</p>
+    {% endfor %}
+
+    <div>
+      <form action="/add/user" method="post">
+        <label for="first_name">First Name:</label>
+        <input type="text" name="first_name" />
+        <label for="last_name">Last Name:</label>
+        <input type="text" name="last_name" />
+        <label for="email">Email:</label>
+        <input type="text" name="email" />
+        <label for="password">Password:</label>
+        <input type="password" name='password' />
+          <label for="password2">Confirm Password:</label>
+          <input type="password" name='confirm_pass' />
+        <input type="submit" value="Register" />
+      </form>
+    </div>
+
+    <!-- Login in area -->
+
+    <div>
+      <h1>Login</h1>
+      {% for message in get_flashed_messages(category_filter=['log']) %}
+      <p>{{message}}</p>
+      {% endfor %}
+      <form action="/users/login" method="post">
+        <label for="email">Email:</label>
+        <input type="text" name="email" />
+        <label for="password">Password:</label>
+        <input type="password" name="password" />
+        <input type="submit" value="Login" />
+      </form>
+    </div>
+  </body>
+</html>

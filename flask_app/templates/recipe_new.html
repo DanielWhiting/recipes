@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Create Recipe</title>
+  </head>
+  <body>
+    <div>
+      <a href="/dashboard">back to recipes</a>
+      <a href="/logout">logout</a>
+    </div>
+    <h1>Add a New Recipe!</h1>
+    <form action="creating/recipe">
+      <label for="name">Name</label>
+      <input type="text" name="name" />
+      <label for="description">Description</label>
+      <input type="text" name="description" />
+      <label for="instructions">Instructions</label>
+      <input type="text" name="instructions" />
+      <label for="date">Date Cooked/Made:</label>
+      <input type="date" name="date" />
+      <label for="under">Under 30 minutes?</label>
+      <input type="radio" name="under_30" />
+      <input type="submit" value="Submit" />
+    </form>
+  </body>
+</html>

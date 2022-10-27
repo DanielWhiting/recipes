@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="{{ url_for('static', filename='/style.css') }}"
+    />
+  </head>
+  <body class="detail-body">
+    <div class="detail-box">
+      <div class="flex-row paddingt-20 space-b">
+        <a href="/dashboard" class="logout head-a margin-l20"
+          >Back to Recipes</a
+        >
+        <a href="/logout" class="logout head-a margin-r20">Logout</a>
+      </div>
+      <div class="detail-content flex">
+        <h1 class="padding-20">
+          Here is a delicous recipe {{user.first_name}}!
+          <h2 class="padding-20">This dish is called: {{show.name}}</h2>
+        </h1>
+        <img class="padding-20" src="{{show.description}}" alt="recipe image" />
+
+        <div class="flex">
+          <h3 class="padding-20">Posted by: {{show.this_user.first_name}}</h3>
+          <p class="padding-20">
+            Under 30 minutes? {% if show.under_30 == 1 %} Yes {% else %} No {%
+            endif %}
+          </p>
+          <!-- <p class="padding-20">Date Made: {{show.date}}</p> -->
+        </div>
+        <div class="width flex">
+          <p class="padding-20">Instructions: {{show.instructions}}</p>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

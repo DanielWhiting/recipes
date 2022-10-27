@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Edit Recipe</title>
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="{{ url_for('static', filename='/style.css') }}"
+    />
+  </head>
+  <body class="detail-body">
+    <div class="flex-row paddingt-20 space-b">
+      <a href="/dashboard" class="logout head-a margin-l20">Back to Recipes</a>
+      <h1>Edit Recipe!</h1>
+      <a href="/logout" class="logout head-a margin-r20">Logout</a>
+    </div>
+
+    <div>
+      {% for message in get_flashed_messages() %}
+      <p class="error-msg">{{message}}</p>
+      {% endfor %}
+    </div>
+    <div class="new-recipe-box">
+    <form action="/recipe/{{recipe.id}}/update" method="post" class="form-1">
+      <label for="name">Name</label>
+      <input type="text" name="name" value="{{recipe.name}}" />
+      <label for="description">Description</label>
+      <input type="text" name="description" value="{{recipe.description}}" />
+      <label for="instructions">Instructions</label>
+      <textarea name="instructions" id="instruction" cols="30" rows="10">
+{{recipe.instructions}}</textarea
+      >
+      <label for="date">Date Cooked/Made:</label>
+      <input type="date" name="date" value="{{recipe.date}}" />
+      <!-- radio button -->
+      <p>Under 30 minutes?</p>
+      <div class="under-time flex-row">
+      <label for="true">Yes</label>
+      <input class="radio" type="radio" name="under_30" id="true" value="1" {% if
+      recipe.under_30 == 1 %} checked {% endif %}/>
+      <label for="false">No</label>
+      <input class="radio" type="radio" name="under_30" id="false" value="0" {% if
+      recipe.under_30 == 0 %} checked {% endif %}/>
+    </div>
+      <!--              -->
+
+      <input type="submit" value="Submit" />
+    </form>
+  </body>
+</html>

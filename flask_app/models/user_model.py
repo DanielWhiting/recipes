@@ -1,5 +1,7 @@
+from unittest import result
 from flask_app.config.mysqlconnection import connectToMySQL
 from flask import flash
+from flask_app.models import recipe_model
 import re
 from flask_app import DATABASE
 
@@ -43,7 +45,32 @@ class User:
       return False
     return cls(result[0])
 
+  # last method to display just my recipes on a seperate page
+
+  @classmethod
+  def my_stuff(cls, data):
+    query = "SELECT * FROM user LEFT JOIN recipes ON user.id = recipes.user_id WHERE user.id = %(id)s"
+    result = connectToMySQL('recipe').query_db(query,data)
+    if len(result) < 1:
+      return False
+    user = cls(result[0])
+    list_of_recipes = []
+
+    for row in result:
+      recipe_data = {
+        **row,
+        'id': row['recipes.id'],
+        'created_at': row['recipes.created_at'],
+        'updated_at': row['recipes.updated_at']
+      }
+      this_recipe = recipe_model.Recipe(recipe_data)
+      list_of_recipes.append(this_recipe)
+    user.recipe = list_of_recipes
+    return user
+
+
   # Validating name, email, and password
+
   @staticmethod
   def validate(user_data):
     is_valid = True

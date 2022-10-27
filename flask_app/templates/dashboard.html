@@ -5,32 +5,42 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Recipes</title>
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="{{ url_for('static', filename='/style.css') }}"
+    />
   </head>
-  <body>
-    <h1>Welcome, {{user.first_name}}</h1>
-    <p>All posted recipes</p>
+  <body class="dashboard-body">
     <div>
-      <a href="/logout">Logout</a>
-      <a href="/create/recipe">+ Create</a>
+      {% for message in get_flashed_messages() %}
+      <p>{{message}}</p>
+      {% endfor %}
     </div>
-    <table>
-      <thead>
-        <tr>
-          <th>Name</th>
-          <th>Under</th>
-          <th>Posted by</th>
-          <th>Actions</th>
-        </tr>
-      </thead>
-      <tbody>
-        {% for rec in all_recipes %}
-        <tr>
-          <td>{{rec.name}}</td>
-          <td>{{rec.under_30}}</td>
-          <td>{{rec.posted_by.first_name}} {{rec.posted_by.last_name}}</td>
-        </tr>
-        {% endfor %}
-      </tbody>
-    </table>
+    <div class="header-container">
+      <h1 class="header-user">Welcome, {{user.first_name}}</h1>
+      <a href="/create/recipe" class="head-a">Create Recipe</a>
+      <a href="/my_recipes" class="head-a">My Recipes</a>
+      <a href="/recipe/{{ range(4, 8 ) | random }}" class="head-a"
+        >Random Recipe</a
+      >
+      <a href="/logout" class="head-a logout">Logout</a>
+    </div>
+
+    <div class="head-rec">
+      <h1>Delicous Recipes</h1>
+    </div>
+
+    <!-- For all recipes -->
+    <div class="recipes-container">
+      {% for rec in all_recipes %}
+      <div class="image-container">
+        <h3 class="recipe-name recipes-container padding-20">{{rec.name}}</h3>
+        <a href="/recipe/{{rec.id}}">
+          <img src="{{rec.description}}" alt="recipe image" />
+        </a>
+      </div>
+      {% endfor %}
+    </div>
   </body>
 </html>

@@ -1,0 +1,229 @@
+* {
+  margin: 0px;
+  padding: 0px;
+}
+body {
+  /* background-image: url("spices.jpg"); */
+  /* background-color: white;
+  height: 100%;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover; */
+  /* background: linear-gradient(
+    90deg,
+    rgba(255, 130, 20, 0.943) 0%,
+    rgb(255, 128, 49) 45%,
+    rgb(240, 124, 15) 100%
+  ); */
+}
+.header-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-right: 3%;
+  padding-left: 3%;
+  /* background: rgb(2, 0, 36); */
+  padding-top: 15px;
+  padding-bottom: 15px;
+  background: linear-gradient(
+    90deg,
+    rgb(209, 11, 54) 0%,
+    rgb(230, 18, 64) 35%,
+    rgb(238, 10, 60) 100%
+  );
+  /* background-color: rgb(209, 11, 54); */
+  border-bottom-right-radius: 10px;
+  border-bottom-left-radius: 10px;
+}
+
+.header-user {
+  color: white;
+}
+
+.head-a {
+  font-size: larger;
+  text-decoration: none;
+  color: white;
+}
+
+.logout {
+  padding: 10px 20px;
+  background-color: #e28008;
+  border-radius: 10px;
+  color: white;
+  font-weight: bold;
+}
+
+/* dashboard recipe content */
+
+.image-container {
+  width: 100%;
+  padding-bottom: 25px;
+  transition: 0.3s;
+}
+
+.image-container:hover {
+  transform: scale(1.05);
+  z-index: 2;
+}
+
+img {
+  width: 400px;
+  height: 400px;
+  border-radius: 10%;
+}
+
+.head-rec {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 3.5% 0;
+  color: black;
+  font-style: italic;
+}
+
+.recipes-container {
+  display: grid;
+  justify-content: center;
+  align-content: center;
+  /* grid-template-columns: 500px 500px 500px; */
+  gap: 4px;
+}
+
+.recipe-name {
+  /* position: relative;
+  left: 45%;
+  top: 50%; */
+  color: black;
+  font-weight: bolder;
+  font-size: xx-large;
+}
+
+.new-recipe-box {
+}
+
+/* Create a new recipe form */
+
+.form-1 {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  padding-bottom: 50px;
+}
+
+label {
+  font-size: 140%;
+  padding-bottom: 15px;
+  padding-top: 15px;
+}
+
+input {
+  width: 50%;
+  padding: 15px;
+  border-radius: 10px;
+  opacity: 0.85;
+}
+
+textarea {
+  width: 50%;
+  padding: 15px;
+  border-radius: 10px;
+  opacity: 0.85;
+}
+
+.flex {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+}
+
+.create-head {
+  color: white;
+  background-color: black;
+  padding-right: 35px;
+}
+
+.create-body {
+  background-image: url("spices.jpg");
+  height: 100%;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.under-time {
+}
+
+.flex-row {
+  display: flex;
+  justify-content: center;
+  flex-direction: row;
+  align-items: center;
+}
+
+.flex-row2 {
+  display: flex;
+  justify-content: space-between;
+  flex-direction: row;
+  align-items: center;
+  padding: 15px 25px;
+  background-color: black;
+}
+
+.error-msg {
+  color: red;
+}
+
+/* Details page */
+
+.detail-box {
+  height: 100vh;
+}
+
+.detail-content {
+  height: 80vh;
+}
+.detail-body {
+  background-color: antiquewhite;
+}
+
+.dashboard-body {
+  background-color: antiquewhite;
+}
+
+.padding-20 {
+  padding-bottom: 20px;
+}
+
+.paddingt-20 {
+  padding-top: 20px;
+}
+
+.padding-r20 {
+  padding-right: 20px;
+}
+
+.space-b {
+  justify-content: space-between;
+}
+
+.margin-l20 {
+  margin-left: 20px;
+}
+.margin-r20 {
+  margin-right: 20px;
+}
+
+.width {
+  width: 400px;
+}
+
+.my-rec-name {
+  padding-right: 30px;
+}
+
+.links-size {
+  font-size: 120%;
+}

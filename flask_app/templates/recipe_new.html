@@ -5,25 +5,54 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Create Recipe</title>
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="{{ url_for('static', filename='/style.css') }}"
+    />
   </head>
-  <body>
+  <body class="create-body">
     <div>
-      <a href="/dashboard">back to recipes</a>
-      <a href="/logout">logout</a>
+      <div class="flex-row2">
+        <a href="/dashboard" class="logout head-a">back to recipes</a>
+        <h1 class="flex create-head">Add a New Recipe!</h1>
+        <a href="/logout" class="logout head-a">logout</a>
+      </div>
+
+      <div>
+        {% for message in get_flashed_messages() %}
+        <p class="error-msg">{{message}}</p>
+        {% endfor %}
+      </div>
+
+      <div class="new-recipe-box">
+        <form action="/new/recipe" method="post" class="form-1">
+          <label for="name">Recipe Name</label>
+          <input type="text" name="name" />
+          <label for="description">Image URL</label>
+          <input type="text" name="description" />
+          <label for="instructions">Ingredients</label>
+          <textarea
+            name="instructions"
+            id="instruction"
+            cols="30"
+            rows="10"
+          ></textarea>
+          <label for="date">Date Cooked/Made:</label>
+          <input type="date" name="date" />
+          <!-- radio button -->
+          <p>Under 30 minutes?</p>
+          <div class="under-time flex-row">
+            <label for="true" class="radio">Yes</label>
+            <input type="radio" name="under_30" id="true" value="1" />
+            <label for="false" class="radio">No</label>
+            <input type="radio" name="under_30" id="false" value="0" />
+          </div>
+          <!--              -->
+
+          <input type="submit" value="Submit" />
+        </form>
+      </div>
     </div>
-    <h1>Add a New Recipe!</h1>
-    <form action="creating/recipe">
-      <label for="name">Name</label>
-      <input type="text" name="name" />
-      <label for="description">Description</label>
-      <input type="text" name="description" />
-      <label for="instructions">Instructions</label>
-      <input type="text" name="instructions" />
-      <label for="date">Date Cooked/Made:</label>
-      <input type="date" name="date" />
-      <label for="under">Under 30 minutes?</label>
-      <input type="radio" name="under_30" />
-      <input type="submit" value="Submit" />
-    </form>
   </body>
 </html>

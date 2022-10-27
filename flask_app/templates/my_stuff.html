@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Recipes</title>
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="{{ url_for('static', filename='/style.css') }}"
+    />
+  </head>
+  <body class="detail-body">
+    <div class="flex-row2">
+      <a class="logout head-a" href="/logout">Logout</a>
+      <a class="logout head-a" href="/create/recipe">+ Create</a>
+    </div>
+    <div>
+      {% for message in get_flashed_messages() %}
+      <p>{{message}}</p>
+      {% endfor %}
+    </div>
+    <div class="flex paddingt-20 links-size">
+      <h1>Welcome, {{user.first_name}} here are all your posted recipes</h1>
+
+      {% for rec in user.recipe %}
+
+      <div class="flex-row">
+        <h2 class="my-rec-name paddingt-20">{{rec.name}}</h2>
+        <div class="paddingt-20">
+          <a class="padding-r20 links-size" href="/recipe/{{rec.id}}"
+            >view recipe</a
+          >
+          <a class="padding-r20 links-size" href="/recipe/{{rec.id}}/edit"
+            >edit</a
+          >
+          <a class="padding-r20 links-size" href="/recipe/{{rec.id}}/delete"
+            >delete</a
+          >
+        </div>
+      </div>
+    </div>
+
+    {% endfor %}
+  </body>
+</html>

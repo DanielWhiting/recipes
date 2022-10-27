@@ -41,7 +41,7 @@ def register():
 def dashboard():
   if not 'user_id' in session:
     return redirect('/')
-  user = User.get_by_id({'id':session['user_id']})
+  user = User.get_by_id({'id':session['user_id']}) # queston on this 
   all_recipes = Recipe.get_all()
   return render_template('dashboard.html', user = user, all_recipes = all_recipes)
 
@@ -68,3 +68,12 @@ def user_login():
     return redirect('/login')
   session['user_id'] = user_from_db.id
   return redirect('/dashboard')
+
+# route for displaying just my recipes
+
+@app.route('/my_recipes')
+def my_recipes ():
+  if not 'user_id' in session:
+    return redirect('/')
+  user = User.my_stuff({'id':session['user_id']})
+  return render_template('my_stuff.html', user = user)
